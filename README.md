@@ -4,9 +4,10 @@ Sample Healthcare Platform
 
 A sample healthcare platform with user authentication, role-based access, and management of patients and drugs. Built with Node.js, Express, MS SQL Server, and a modern HTML/CSS/JS frontend.
 
-## Table of Contents
+<h2 align="left">
+Table of Contents
+</h2>
 
-- [Table of Contents](#table-of-contents)
 - [I. Purposes](#i-purposes)
 - [II. Main Features](#ii-main-features)
   - [User Authentication](#user-authentication)
@@ -70,14 +71,14 @@ This project demonstrates a sample healthcare platform with the following goals:
 ### API Endpoints
 
 - `POST /api/login` — Authenticate user
-- `GET /api/patients` — List patients (admin, patients)
-- `POST /api/patients` — Add patient (admin, patients)
-- `PUT /api/patients/:id` — Update patient (admin, patients)
-- `DELETE /api/patients/:id` — Remove patient (admin, patients)
-- `GET /api/drugs` — List drugs (admin, drugs)
-- `POST /api/drugs` — Add drug (admin, drugs)
-- `PUT /api/drugs/:id` — Update drug (admin, drugs)
-- `DELETE /api/drugs/:id` — Remove drug (admin, drugs)
+- `GET /api/patients` — List patients (admin, user_patients)
+- `POST /api/patients` — Add patient (admin, user_patients)
+- `PUT /api/patients/:id` — Update patient (admin, user_patients)
+- `DELETE /api/patients/:id` — Remove patient (admin, user_patients)
+- `GET /api/drugs` — List drugs (users: admin, user_drugs)
+- `POST /api/drugs` — Add drug (admin, user_drugs)
+- `PUT /api/drugs/:id` — Update drug (admin, user_drugs)
+- `DELETE /api/drugs/:id` — Remove drug (admin, user_drugs)
 
 ### UI/UX
 
@@ -117,9 +118,9 @@ The platform will then be available at:
 ## VI. SW Info
 
 - Platform runs locally on Windows (tested with PowerShell and Node.js)
-- Database: MS SQL Server 2019+
-- Code editor: Visual Studio Code (recommended)
-- Browser: Chrome, Edge, or Firefox
+- Database: MS SQL Server, SQL Server 2022 Configuration Manager, SQL Server Management Studio 21, Azure Data Studio
+- Code editor: Visual Studio Code
+- Browsers: Google Chrome (chromium), Mozilla Firefox, Safari (webkit)
 
 ## VII. Screenshots
 
