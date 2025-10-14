@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient(120deg, #f0f4f8 0%, #e0eafc 100%);
+}
+.dashboard-container {
+    max-width: 700px;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+    padding: 40px 32px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.dashboard-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    width: 100%;
+    margin-top: 32px;
+    justify-content: center;
+}
+.dashboard-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    background: #f7fafc;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s, transform 0.1s;
+    border: 1.5px solid #e0eafc;
+    margin-bottom: 8px;
+}
+.dashboard-btn:hover {
+    background: #e0eafc;
+    box-shadow: 0 4px 16px rgba(0,116,217,0.10);
+    transform: translateY(-3px) scale(1.04);
+    border-color: #b3c6f7;
+}
+.db-icon {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #0074d9;
+}
+.db-label {
+    font-size: 1.08em;
+    color: #222;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+@media (max-width: 600px) {
+    .dashboard-buttons {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .dashboard-btn {
+        width: 100%;
+        height: 70px;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 18px;
+    }
+    .db-icon {
+        font-size: 1.5em;
+        margin-bottom: 0;
+        margin-right: 16px;
+    }
+}

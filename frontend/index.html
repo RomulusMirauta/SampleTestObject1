@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Platform</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-section">
+            <h1>Welcome to the Sample Healthcare Platform</h1>
+            <p>Please login to continue:</p>
+        </div>
+        <div id="loginSection">
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required><br>
+                <input type="password" id="password" placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+            <div id="loginResult"></div>
+        </div>
+        <nav id="navSection" style="display:none">
+            <button id="patientsBtn" onclick="location.href='patients.html'" style="display:none">Patients</button>
+            <button id="drugsBtn" onclick="location.href='drugs.html'" style="display:none">Drugs</button>
+            <button onclick="logout()">Logout</button>
+        </nav>
+        <script>
+        function showNav() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('navSection').style.display = '';
+            const role = localStorage.getItem('role');
+            if (role === 'admin' || role === 'patients') {
+                document.getElementById('patientsBtn').style.display = '';
+            }
+            if (role === 'admin' || role === 'drugs') {
+                document.getElementById('drugsBtn').style.display = '';
+            }
+        }
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('role');
+            location.reload();
+        }
+        if (localStorage.getItem('loggedIn') === 'true') {
+            showNav();
+        }
+        document.getElementById('loginForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const res = await fetch('http://localhost:3001/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (data.message === 'Login successful') {
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('role', data.user.role);
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                window.location.href = 'dashboard.html';
+            } else {
+                document.getElementById('loginResult').innerText = data.message || 'Login attempted.';
+            }
+        };
+        </script>
+    </div>
+</body>
+</html>

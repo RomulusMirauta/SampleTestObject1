@@ -1,0 +1,168 @@
+#patientsForm, #addPatientForm, #addDrugForm {
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+	padding: 28px 24px 18px 24px;
+	margin: 32px auto 24px auto;
+	max-width: 420px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+#addPatientForm input,
+#addDrugForm input {
+	padding: 10px 12px;
+	border: 1px solid #cfd8dc;
+	border-radius: 6px;
+	font-size: 1em;
+	background: #f7fafc;
+	transition: border 0.2s;
+}
+#addPatientForm input:focus,
+#addDrugForm input:focus {
+	border: 1.5px solid #0074d9;
+	outline: none;
+}
+
+#addPatientForm button,
+#addDrugForm button {
+	margin-top: 10px;
+	padding: 12px 0;
+	font-size: 1.1em;
+	color: #fff;
+	background: linear-gradient(90deg, #0074d9 60%, #005fa3 100%);
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s, transform 0.1s;
+}
+#addPatientForm button:hover,
+#addDrugForm button:hover {
+	background: linear-gradient(90deg, #005fa3 60%, #0074d9 100%);
+	transform: translateY(-2px) scale(1.04);
+}
+
+#patientsList, #drugsList {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto 0 auto;
+	max-width: 420px;
+}
+#patientsList li, #drugsList li {
+	background: #f7fafc;
+	margin: 10px 0;
+	padding: 16px 18px;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+	font-size: 1.08em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#patientsList li:nth-child(even), #drugsList li:nth-child(even) {
+	background: #e0eafc;
+}
+
+h2 {
+	text-align: center;
+	margin-top: 36px;
+	color: #0074d9;
+	font-size: 2em;
+	letter-spacing: 1px;
+}
+#loginForm button {
+	margin: 20px 0 0 0;
+	padding: 12px 32px;
+	font-size: 1.2em;
+	color: #fff;
+	background-color: #0074d9;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+#loginForm button:hover {
+	background-color: #005fa3;
+}
+
+body {
+	font-family: 'Segoe UI', Arial, sans-serif;
+	margin: 0;
+	background: linear-gradient(120deg, #f0f4f8 0%, #e0eafc 100%);
+	min-height: 100vh;
+}
+.container {
+	max-width: 420px;
+	margin: 60px auto 0 auto;
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 6px 32px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+	padding: 40px 32px 32px 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.title-section {
+	margin-bottom: 36px;
+}
+
+nav {
+	margin: 30px 0 20px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+nav {
+	margin: 30px 0 20px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+nav button, #loginForm button {
+	padding: 12px 32px;
+	font-size: 1.1em;
+	color: #fff;
+	background: linear-gradient(90deg, #0074d9 60%, #005fa3 100%);
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s, transform 0.1s;
+}
+nav button:hover, #loginForm button:hover {
+	background: linear-gradient(90deg, #005fa3 60%, #0074d9 100%);
+	transform: translateY(-2px) scale(1.04);
+}
+#loginForm {
+	margin-top: 18px;
+	width: 100%;
+}
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+	width: 90%;
+	padding: 10px 12px;
+	margin: 10px 0;
+	border: 1px solid #cfd8dc;
+	border-radius: 6px;
+	font-size: 1em;
+	background: #f7fafc;
+	transition: border 0.2s;
+}
+#loginForm input[type="text"]:focus,
+#loginForm input[type="password"]:focus {
+	border: 1.5px solid #0074d9;
+	outline: none;
+}
+#loginResult {
+	color: #d32f2f;
+	margin-top: 10px;
+	min-height: 24px;
+	font-size: 1em;
+}

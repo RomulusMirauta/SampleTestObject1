@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Platform - Patients</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/patients.css">
+</head>
+<body>
+    <button onclick="window.location.href='dashboard.html'" class="back-btn" style="margin: 24px 0 0 16px; padding: 8px 18px; border-radius: 8px; border: none; background: #e0eafc; color: #0074d9; font-size: 1em; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: background 0.2s;">← Back</button>
+    <h2>Patients</h2>
+    <form id="addPatientForm">
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" placeholder="Last Name" required>
+        <input type="date" id="dob" required>
+        <input type="text" id="gender" placeholder="Gender" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <button type="submit">Add Patient</button>
+    </form>
+    <div id="patientsList" class="patients-list"></div>
+    <script>
+        function getAuth() {
+            return {
+                username: localStorage.getItem('username'),
+                password: localStorage.getItem('password')
+            };
+        }
+            function formatDate(dateStr) {
+                if (!dateStr) return '';
+                const d = new Date(dateStr);
+                if (isNaN(d)) return dateStr;
+                return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+            async function loadPatients() {
+                const { username, password } = getAuth();
+                const res = await fetch(`http://localhost:3001/api/patients?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+                const patients = await res.json();
+                const list = document.getElementById('patientsList');
+                list.innerHTML = '';
+                if (Array.isArray(patients)) {
+                    patients.forEach(p => {
+                        const card = document.createElement('div');
+                        card.className = 'patient-card';
+                        card.innerHTML = `
+                            <div class="patient-header">
+                                <span class="patient-avatar">👤</span>
+                                <span class="patient-name">${p.FirstName} ${p.LastName}</span>
+                            </div>
+                            <div class="patient-details">
+                                <div><strong>DOB:</strong> ${formatDate(p.DateOfBirth)}</div>
+                                <div><strong>Gender:</strong> ${p.Gender || ''}</div>
+                                <div><strong>Address:</strong> ${p.Address || ''}</div>
+                            </div>
+                        `;
+                        list.appendChild(card);
+                    });
+                } else {
+                    list.innerHTML = `<div class="patient-card">${patients.message || 'Access denied'}</div>`;
+                }
+            }
+        document.getElementById('addPatientForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const { username, password } = getAuth();
+            const patient = {
+                username,
+                password,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                dob: document.getElementById('dob').value,
+                gender: document.getElementById('gender').value,
+                address: document.getElementById('address').value
+            };
+            await fetch('http://localhost:3001/api/patients', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(patient)
+            });
+            loadPatients();
+        };
+        loadPatients();
+    </script>
+</body>
+</html>

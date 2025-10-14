@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Platform - Dashboard</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <div id="userInfoBar" style="position:fixed;top:24px;right:36px;background:#e0eafc;color:#0074d9;border-radius:18px;padding:10px 22px 10px 18px;font-size:1.08em;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.07);display:none;align-items:center;gap:12px;z-index:1001;min-width:120px;"></div>
+    <div class="dashboard-container">
+        <h2>Welcome to the Sample Healthcare Platform</h2>
+        <p>Select an option below to get started:</p>
+        <div class="dashboard-buttons" id="dashboardButtons">
+            <!-- Buttons will be injected by JS based on role -->
+        </div>
+    </div>
+    <script>
+        // Show username in top-right corner if logged in
+        const userInfoBar = document.getElementById('userInfoBar');
+        const username = localStorage.getItem('username') || '';
+        if (username) {
+            userInfoBar.innerHTML = `<span style='font-size:1.3em;'>👤</span> <span>${username}</span>`;
+            userInfoBar.style.display = 'flex';
+        }
+        function logout() {
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('role');
+            window.location.href = 'index.html';
+        }
+        // Optionally, check if not logged in and redirect
+        if (!localStorage.getItem('loggedIn') || localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        // Render dashboard buttons based on role
+        const role = localStorage.getItem('role');
+        const dashboardButtons = document.getElementById('dashboardButtons');
+        if (role === 'admin') {
+            dashboardButtons.innerHTML = `
+                <div class="dashboard-btn" onclick="location.href='patients.html'">
+                    <span class="db-icon">👤</span>
+                    <span class="db-label">Patients</span>
+                </div>
+                <div class="dashboard-btn" onclick="location.href='drugs.html'">
+                    <span class="db-icon">💊</span>
+                    <span class="db-label">Drugs</span>
+                </div>
+                <div class="dashboard-btn" onclick="alert('Reports page coming soon!')">
+                    <span class="db-icon">📊</span>
+                    <span class="db-label">Reports</span>
+                </div>
+                <div class="dashboard-btn" onclick="alert('Admin page coming soon!')">
+                    <span class="db-icon">⚙️</span>
+                    <span class="db-label">Admin</span>
+                </div>
+                <div class="dashboard-btn" onclick="logout()">
+                    <span class="db-icon">🚪</span>
+                    <span class="db-label">Logout</span>
+                </div>
+            `;
+        } else if (role === 'patients') {
+            dashboardButtons.innerHTML = `
+                <div class="dashboard-btn" onclick="location.href='patients.html'">
+                    <span class="db-icon">👤</span>
+                    <span class="db-label">Patients</span>
+                </div>
+                <div class="dashboard-btn" onclick="logout()">
+                    <span class="db-icon">🚪</span>
+                    <span class="db-label">Logout</span>
+                </div>
+            `;
+        } else if (role === 'drugs') {
+            dashboardButtons.innerHTML = `
+                <div class="dashboard-btn" onclick="location.href='drugs.html'">
+                    <span class="db-icon">💊</span>
+                    <span class="db-label">Drugs</span>
+                </div>
+                <div class="dashboard-btn" onclick="logout()">
+                    <span class="db-icon">🚪</span>
+                    <span class="db-label">Logout</span>
+                </div>
+            `;
+        } else {
+            // fallback: only logout
+            dashboardButtons.innerHTML = `
+                <div class="dashboard-btn" onclick="logout()">
+                    <span class="db-icon">🚪</span>
+                    <span class="db-label">Logout</span>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
