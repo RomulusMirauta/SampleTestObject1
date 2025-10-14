@@ -24,11 +24,13 @@ Table of Contents
 - [IV. AI Info](#iv-ai-info)
 - [V. Main Technologies Used](#v-main-technologies-used)
 - [VI. SW Info](#vi-sw-info)
-- [VII. Screenshots](#vii-screenshots)
+- [VII. Platform Screenshots](#vii-platform-screenshots)
   - [Login Page](#login-page)
   - [Dashboard](#dashboard)
   - [Patients Page](#patients-page)
   - [Drugs Page](#drugs-page)
+- [VIII. Other Screenshots](#viii-other-screenshots)
+  - [Azure Data Studio](#azure-data-studio)
 
 <br>
 
@@ -111,6 +113,8 @@ The platform will then be available at:
 
 [http://localhost:3001/](http://localhost:3001/)
 
+> **Note:** The SQL Server database is expected to be available by default on `localhost`, port `1433` (the standard SQL Server port). If your setup differs, update the backend configuration in `backend/index.js` accordingly.
+
 <br>
 
 ## IV. AI Info
@@ -138,22 +142,34 @@ The platform will then be available at:
 
 <br>
 
-## VII. Screenshots
+## VII. Platform Screenshots
 
 ### Login Page
 
-![Login Page](screenshots/login.png)
+![Login Page](screenshots/platform/login.png)
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/platform/dashboard.png)
 
 ### Patients Page
 
-![Patients Page](screenshots/patients.png)
+![Patients Page](screenshots/platform/patients.png)
 
 ### Drugs Page
 
-![Drugs Page](screenshots/drugs.png)
+![Drugs Page](screenshots/platform/drugs.png)
 
----
+<br>
+
+## VIII. Other Screenshots
+
+### Azure Data Studio
+
+![Azure](screenshots/other/initial_schema.png)
+
+![Azure](screenshots/other/select_all.png)
+
+![Azure](screenshots/other/join_examples1.png)
+
+![Azure](screenshots/other/join_examples2.png)
