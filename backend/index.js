@@ -1,3 +1,7 @@
+// Healthcheck endpoint
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
