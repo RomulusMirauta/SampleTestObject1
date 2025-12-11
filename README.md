@@ -3,7 +3,8 @@ Sample Healthcare Platform
 </h1>
 
 <p align="center">
-A sample healthcare platform with user authentication, role-based access, and management of patients and drugs.<br>Built with Node.js, Express, MS SQL Server, and a modern HTML/CSS/JS frontend.</p>
+A sample healthcare platform with user authentication, role-based access, and management of patients and drugs.<br>Built with Node.js, Express, MS SQL Server, and a modern HTML/CSS/JS frontend.
+</p>
 
 <br>
 
@@ -39,7 +40,7 @@ Table of Contents
 
 ## I. Purposes
 
-This project demonstrates a sample healthcare platform with the following goals:
+This project demonstrates a sample test object (a healthcare platform used as a test target for Playwright automation) with the following goals:
 
 - Showcase a full-stack web application with user authentication and role-based access.
 - Provide a clean, modern UI for managing patients and drugs.
@@ -109,7 +110,7 @@ This project demonstrates a sample healthcare platform with the following goals:
 Start the backend server from the `backend` directory with:
 
 ```
-node index.js
+node backend/index.js
 ```
 
 The platform will then be available at:
