@@ -1,7 +1,3 @@
-// Healthcheck endpoint
-app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
-});
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -19,6 +15,11 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 // Serve index.html as landing page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+// Healthcheck endpoint
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // SQL Server config (adjust as needed)
