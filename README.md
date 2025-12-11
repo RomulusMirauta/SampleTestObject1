@@ -40,7 +40,7 @@ Table of Contents
 
 ## I. Purposes
 
-This project demonstrates a sample test object (a healthcare platform used as a test target for Playwright automation) with the following goals:
+This project demonstrates a sample test object (a healthcare platform used as a test target for Playwright and Cypress automation) with the following goals:
 
 - Showcase a full-stack web application with user authentication and role-based access.
 - Provide a clean, modern UI for managing patients and drugs.
